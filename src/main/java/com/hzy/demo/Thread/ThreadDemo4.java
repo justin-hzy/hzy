@@ -41,7 +41,7 @@ public class ThreadDemo4 {
                 for(int j=0;j<100;j++){
                     i++;
                 }
-                TimeUnit.SECONDS.sleep(20);
+               /* TimeUnit.SECONDS.sleep(20);*/
                 return i;
             }
         };
@@ -49,6 +49,8 @@ public class ThreadDemo4 {
         FutureTask futureTask = new FutureTask(callable);
 
         Thread thread = new Thread(futureTask);
+
+
 
         thread.start();
 

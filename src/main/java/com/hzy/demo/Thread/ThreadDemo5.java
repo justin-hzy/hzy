@@ -4,8 +4,11 @@ import java.util.concurrent.*;
 
 public class ThreadDemo5 {
 
+    /*线程池*/
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        ExecutorService executorService = Executors.newFixedThreadPool(1);
+
+        ExecutorService executorService = Executors.newFixedThreadPool(6);
+
         Callable<Integer> callable = new Callable<Integer>() {
             @Override
             public Integer call() throws Exception {
@@ -16,7 +19,6 @@ public class ThreadDemo5 {
                 i = i/0;
                 /*TimeUnit.SECONDS.sleep(20);*/
                 return i;
-
             }
         };
         Future<Integer> future0 = executorService.submit(callable);

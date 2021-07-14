@@ -1,7 +1,6 @@
-server:
-  port: 8080
-
 spring:
+  profiles:
+    active: dev2
   application:
     name: blog-admin
   datasource:
@@ -9,11 +8,30 @@ spring:
     password: Hzy_1234
     url: jdbc:mysql://47.115.36.38:3306/hzy?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
-
+  redis:
+    host: 47.115.36.38
+    port: 6379
+    password: myredis_123
+    timeout: 5000
+    database: 0
+    jedis:
+      pool:
+        #连接池最大连接数
+        max-active: 8
+        #连接池最大空闲连接数
+        max-idle: 8
+        max-wait: -1
+        #连接池最小空闲连接数
+        min-idle: 1
 mybatis:
   mapper-locations: classpath:mapping/*Mapping.xml
   type-aliases-package: com.eva.dto
 
 logging:
   level:
-    com.eva.mapper : debug
+    com.hzy.demo.exception : trace
+  file:
+    path: D:/java_project/hzy/src/main/resources/log
+  pattern:
+    console: "%d{yyyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{50} - %msg%n"
+    file: "%d{yyyyy-MM-dd HH:mm:ss} === [%thread]  === %-5level === %logger{50} - %msg%n"
